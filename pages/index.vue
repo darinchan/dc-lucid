@@ -144,12 +144,20 @@ body {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
 }
+input::-webkit-calendar-picker-indicator {
+  opacity: 1;
+  background: transparent;
+  color: #e2e2e2;
+  width: 16px;
+  height: 14px;
+}
 
 .hero-fade-enter-active {
   background: linear-gradient(90deg, #000, #fff, #000);
   background-repeat: no-repeat;
   background-size: 80%;
   animation: animate 1.5s linear;
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: rgba(0, 0, 0, 0);
 }
@@ -194,10 +202,10 @@ body {
 .mainContent {
   height: 100%;
   .innerContent {
-    border-bottom: 1px solid rgba(0, 0, 0, 1);
+    border-bottom: 1px solid rgba(137, 141, 141, 1);
     @media (min-width: 992px) {
       border-bottom: 0;
-      border-right: 1px solid rgba(0, 0, 0, 1);
+      border-right: 1px solid rgba(137, 141, 141, 1);
     }
   }
   h3 {
@@ -241,6 +249,7 @@ body {
 export default {
   data() {
     return {
+      title: "Home",
       form: {
         first: "",
         last: "",
@@ -458,6 +467,19 @@ export default {
         "Zimbabwe"
       ],
       show: true
+    };
+  },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        {
+          hid: "description",
+          name: "description",
+          content: "My custom description"
+        }
+      ]
     };
   },
   computed: {
