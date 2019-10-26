@@ -112,14 +112,14 @@
           alt="Lucid Logo in footer"
           width="50%"
         />
-        <!-- prettier-ignore -->
-        <p>
-          7373 Gateway Boulevard
-          <span>,</span> Newark, CA 94560 USA
-        </p>
+        <b-row>
+          <p class="col-sm-12 col-md-auto separateBar">
+            <span class="address comma">7373 Gateway Boulevard</span>
+            <span class="address">Newark, CA 94560 USA</span>
+          </p>
 
-        <p>+1 510 648 3553</p>
-
+          <p class="col-sm-12 col-md-auto mb-4">+1 510 648 3553</p>
+        </b-row>
         <p>Copyright ©2019 Lucid Motors, Inc.</p>
       </b-col>
       <b-col align-self="end" cols="auto">
@@ -144,7 +144,7 @@ body {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
 }
-input::-webkit-calendar-picker-indicator {
+::-webkit-calendar-picker-indicator {
   opacity: 1;
   background: transparent;
   color: #e2e2e2;
@@ -242,6 +242,34 @@ input::-webkit-calendar-picker-indicator {
 }
 .footer {
   background: $lucidGray;
+  font-size: 12px;
+  a {
+    color: #212529;
+  }
+  .separateBar {
+    border: none;
+  }
+  @media (min-width: 768px) {
+    .separateBar {
+      border-right: 1px solid #2d2926;
+      height: 90%;
+    }
+  }
+  .address {
+    display: block;
+    .comma::after {
+      content: "";
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      display: inline;
+      .comma:after {
+        content: ",";
+        display: inline;
+      }
+    }
+  }
 }
 </style>
 
